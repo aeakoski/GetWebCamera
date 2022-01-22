@@ -63,7 +63,7 @@ import com.github.sarxos.webcam.util.ImageUtils;
 @SeeAlso({})
 @WritesAttributes({ @WritesAttribute(attribute = "probilities", description = "The probabilites and labels") })
 /**
- * 
+ *
  * @author tspann
  *
  */
@@ -119,7 +119,7 @@ public class GetWebCameraProcessor extends AbstractProcessor {
 
 	/**
 	 * https://github.com/sarxos/webcam-capture/blob/master/webcam-capture/src/example/java/DifferentFileFormatsExample.java
-	 * 
+	 *
 	 */
 	@Override
 	public void onTrigger(final ProcessContext context, final ProcessSession session) throws ProcessException {
@@ -146,7 +146,7 @@ public class GetWebCameraProcessor extends AbstractProcessor {
 				cameraName = "";
 			}
 			final String cameraNameFinal = cameraName;
-			
+
 			try {
 				final AtomicReference<Boolean> wasError = new AtomicReference<>(false);
 
@@ -194,7 +194,7 @@ public class GetWebCameraProcessor extends AbstractProcessor {
 
 									wcam.close();
 								}
-							} 
+							}
 							else {
 								// No Webcameras found
 								wasError.set(true);
@@ -216,7 +216,7 @@ public class GetWebCameraProcessor extends AbstractProcessor {
 				throw new ProcessException(e);
 			}
 
-			session.commit();
+			session.commitAsync();
 		} catch (
 
 		final Throwable t) {
